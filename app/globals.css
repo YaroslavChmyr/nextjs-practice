@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-inter: "Inter", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
+}
+
+html {
+  font-family: var(--font-inter);
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
 @layer utilities {
   .background-light850_dark100 {
     @apply bg-light-850 dark:bg-dark-100;
