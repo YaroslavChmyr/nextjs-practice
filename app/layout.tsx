@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Space_Grotesk } from "next/font/google";
+// import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",

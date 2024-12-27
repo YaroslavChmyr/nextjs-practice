@@ -1,65 +1,57 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { FlatCompat } from '@eslint/eslintrc'
+import importPlugin from 'eslint-plugin-import'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+  baseDirectory: __dirname
+})
 
 const eslintConfig = [
   ...compat.extends(
-    "next/core-web-vitals",
-    "next/typescript",
-    "standard",
-    "plugin:tailwindcss/recommended",
-    "prettier",
-    "plugin:import/recommended"
+    'next/core-web-vitals',
+    'next/typescript',
+    'plugin:tailwindcss/recommended',
+    'prettier',
+    'plugin:import/recommended'
   ),
   {
-    plugins: ["import"],
+    plugins: {
+      import: importPlugin
+    },
     rules: {
-      "import/order": [
-        "error",
+      'import/order': [
+        'error',
         {
           groups: [
-            "builtin", // Built-in types are first
-            "external", // External libraries
-            "internal", // Internal modules
-            ["parent", "sibling"], // Parent and sibling types can be mingled together
-            "index", // Then the index file
-            "object", // Object imports
+            'builtin', // Built-in types are first
+            'external', // External libraries
+            'internal', // Internal modules
+            ['parent', 'sibling'], // Parent and sibling types can be mingled together
+            'index', // Then the index file
+            'object' // Object imports
           ],
-          "newlines-between": "always",
+          'newlines-between': 'always',
           pathGroups: [
             {
-              pattern: "@app/**",
-              group: "external",
-              position: "after",
-            },
+              pattern: '@app/**',
+              group: 'external',
+              position: 'after'
+            }
           ],
-          pathGroupsExcludedImportTypes: ["builtin"],
+          pathGroupsExcludedImportTypes: ['builtin'],
           alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
-        },
-      ],
-    },
-  },
-  {
-    ignorePatterns: ["components/ui/**"],
-    overrides: [
-      {
-        files: ["*.ts", "*.tsx"],
-        rules: {
-          "no-undef": "off",
-        },
-      },
-    ],
-  },
-];
+            order: 'asc',
+            caseInsensitive: true
+          }
+        }
+      ]
+    }
+  }
+]
 
-export default eslintConfig;
+export default eslintConfig
