@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 // import { Space_Grotesk } from "next/font/google";
-import "./globals.css";
 import localFont from "next/font/local";
-import { ThemeProvider } from "next-themes";
+import "./globals.css";
+
+import { ThemeProvider } from "@/components/theme-provider";
+
+import Navbar from "../components/navigation/navbar";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -46,6 +49,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
