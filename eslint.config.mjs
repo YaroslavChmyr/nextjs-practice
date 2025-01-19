@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 
 import { FlatCompat } from "@eslint/eslintrc";
 import importPlugin from "eslint-plugin-import";
+import prettierPlugin from "eslint-plugin-prettier";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,6 +23,7 @@ const eslintConfig = [
   {
     plugins: {
       import: importPlugin,
+      prettier: prettierPlugin,
     },
     rules: {
       "import/order": [
@@ -50,6 +52,7 @@ const eslintConfig = [
           },
         },
       ],
+      "prettier/prettier": "error",
     },
   },
 ];
